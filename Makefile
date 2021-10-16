@@ -5,7 +5,7 @@
 first-run: update-Makefile # this-line-will-be-deleted-during-first-run
 
 # Note: the first command becomes the default `make` target.
-NPM_COMMANDS = clean dev
+NPM_COMMANDS = clean build dev
 
 .PHONY: $(NPM_COMMANDS)
 $(NPM_COMMANDS):
@@ -18,3 +18,16 @@ UPDATE_MAKEFILE_SED_ARGS = "s/^NPM_COMMANDS = .*$$/NPM_COMMANDS = ${DYNAMIC_NPM_
 update-Makefile:
 	if [ "$(shell uname -s)" = "Darwin" ] ; then sed -i "" ${UPDATE_MAKEFILE_SED_ARGS} ; fi
 	if [ "$(shell uname -s)" != "Darwin" ] ; then sed -i"" ${UPDATE_MAKEFILE_SED_ARGS} ; fi
+
+SFTP_PATH = "towns.dreamhost.com:~/garron.net/temp/vzome-viewer/"
+URL       = "https://garron.net/temp/vzome-viewer/"
+
+.PHONY: deploy
+deploy: build
+	rsync -avz \
+		--exclude .DS_Store \
+		--exclude .git \
+		./dist/src/test/ \
+		${SFTP_PATH}
+	echo "\nDone deploying. Go to ${URL}\n"
+

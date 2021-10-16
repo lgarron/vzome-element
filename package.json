@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "clean": "rm -rf ./dist",
+    "build": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src/test\", dev: false}))'",
     "dev": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src/test\"}))'"
   },
   "repository": {

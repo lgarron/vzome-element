@@ -5,7 +5,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 // @ts-ignore // no types available
 import vZome from "@vzome/react-vzome";
-import { vZomeCSS } from "./vzome-viewer.css";
+import { vZomeViewerCSS } from "./vzome-viewer.css";
 
 export class VZomeViewer extends HTMLElement {
   #root: ShadowRoot;
@@ -15,7 +15,7 @@ export class VZomeViewer extends HTMLElement {
     this.#root = this.attachShadow({ mode: "open" });
 
     this.#root.appendChild(document.createElement("style")).textContent =
-      vZomeCSS;
+      vZomeViewerCSS;
     this.#container = this.#root.appendChild(document.createElement("div"));
   }
 
@@ -29,17 +29,16 @@ export class VZomeViewer extends HTMLElement {
   }
 
   #render(): void {
-    console.log("rednering", this.src);
-    if (this.src === null) {
+    if (this.src === null || this.src === "") {
+      ReactDOM.unmountComponentAtNode(this.#container);
       this.#reactElement = null;
       return;
     }
-    console.log(this.offsetWidth, this.#container);
 
+    // TODO: Scale canvas by `window.devicePixelRatio`.
+    // TODO: Can we handle canvas resizing using `ResizeObserver` without modifying `vZome` or recreating the element constantly?
     this.#reactElement = React.createElement(vZome.UrlViewer, {
       url: this.src,
-      width: this.offsetWidth,
-      height: this.offsetHeight,
     });
     ReactDOM.render(this.#reactElement, this.#container);
   }
@@ -61,7 +60,11 @@ export class VZomeViewer extends HTMLElement {
 
   // Reflect the attribute in a JS property.
   set src(newSrc: string | null) {
-    this.setAttribute("src", newSrc);
+    if (newSrc === null) {
+      this.removeAttribute("src");
+    } else {
+      this.setAttribute("src", newSrc);
+    }
   }
 
   get src(): string | null {
