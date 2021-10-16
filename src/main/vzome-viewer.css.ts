@@ -17,10 +17,16 @@ export const vZomeViewerCSS: string = `
 
 :host > div,
 :host > div > div,
-:host > div > div > div,
-canvas {
+:host > div > div > div {
   width: 100% !important;
   height: 100% !important;
   overflow: hidden;
 }
+
+
+:host > div > div > div {
+  display: grid;
+  place-content: center;
+}
+
 `;
