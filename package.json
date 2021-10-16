@@ -1,0 +1,28 @@
+{
+  "name": "vzome-viewer",
+  "version": "0.0.1",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "dev": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src/test\"}))'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lgarron/vzome-element.git"
+  },
+  "keywords": [],
+  "author": "Lucas Garron <code@garron.net>",
+  "license": "(MIT OR GPL-3.0-or-later)",
+  "bugs": {
+    "url": "https://github.com/lgarron/vzome-element/issues"
+  },
+  "homepage": "https://github.com/lgarron/vzome-element#readme",
+  "devDependencies": {
+    "barely-a-dev-server": "^0.2.1"
+  },
+  "dependencies": {
+    "@vzome/react-vzome": "^0.9.24",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "regenerator-runtime": "^0.13.9"
+  }
+}
