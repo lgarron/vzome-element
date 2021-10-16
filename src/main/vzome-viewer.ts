@@ -9,16 +9,14 @@ import { vZomeCSS } from "./vzome-viewer.css";
 
 export class VZomeViewer extends HTMLElement {
   #root: ShadowRoot;
-  #contentWrapper: HTMLElement;
+  #container: HTMLElement;
   constructor() {
     super();
     this.#root = this.attachShadow({ mode: "open" });
 
     this.#root.appendChild(document.createElement("style")).textContent =
       vZomeCSS;
-    this.#contentWrapper = this.#root.appendChild(
-      document.createElement("div")
-    );
+    this.#container = this.#root.appendChild(document.createElement("div"));
   }
 
   connectedCallback(): void {
@@ -31,19 +29,19 @@ export class VZomeViewer extends HTMLElement {
   }
 
   #render(): void {
-    this.#contentWrapper.textContent = "";
+    console.log("rednering", this.src);
     if (this.src === null) {
       this.#reactElement = null;
       return;
     }
-    console.log(this.offsetWidth);
+    console.log(this.offsetWidth, this.#container);
 
     this.#reactElement = React.createElement(vZome.UrlViewer, {
       url: this.src,
       width: this.offsetWidth,
       height: this.offsetHeight,
     });
-    ReactDOM.render(this.#reactElement, this.#contentWrapper);
+    ReactDOM.render(this.#reactElement, this.#container);
   }
 
   static get observedAttributes(): string[] {

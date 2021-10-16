@@ -3,15 +3,16 @@ export const vZomeCSS: string = `
   display: inline-grid;
   width: 384px;
   height: 256px;
-  place-content: center;
   overflow: hidden;
 
-  background: red;
 }
 
 :host > div {
   display: grid;
-  width: 100%;
-  height: 100%;
+  overflow: hidden;
+}
+
+:host > div:empty {
+  background: radial-gradient(#EEE, #AAA);
 }
 `;
