@@ -23,8 +23,8 @@ export class VZomeViewer extends HTMLElement {
     this.#render();
   }
 
-  #reactElement: React.CElement<any, any> | null = null;
-  get reactElement(): React.CElement<any, any> | null {
+  #reactElement: React.ComponentElement<vZome.UrlViewer, any> | null = null;
+  get reactElement(): React.ComponentElement<vZome.UrlViewer, any> | null {
     return this.#reactElement;
   }
 
