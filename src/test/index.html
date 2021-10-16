@@ -4,16 +4,23 @@
     <meta charset="utf8">
     <title>&lt;vzome-viewer&gt;</title>
     <link rel="stylesheet" href="./vzome-viewer.css">
-    <script src="./vzome-viewer.js" href="./vzome-viewer.ts" type="module" defer></script>
+    <script src="./index.js" href="./index.ts" type="module" defer></script>
   </head>
   <body>
-    <vzome-viewer></vzome-viewer>
-    <vzome-viewer
-      src="https://raw.githubusercontent.com/vorth/vzome-sharing/main/2021/07/24/12-40-30-Japan-Olympics-logo/Japan-Olympics-logo.vZome"
-    ></vzome-viewer>
-    <vzome-viewer
-      src="https://raw.githubusercontent.com/vorth/vzome-sharing/main/2021/09/16/13-19-19-spruce-disdyakis-triacontahedron/spruce-disdyakis-triacontahedron.vZome"
-      style="width: 100%;"
-    ></vzome-viewer>
+    <section>
+    
+    <vzome-viewer src="https://raw.githubusercontent.com/vorth/vzome-sharing/main/2021/07/24/12-40-30-Japan-Olympics-logo/Japan-Olympics-logo.vZome"></vzome-viewer>
+    
+    <select>
+      <option value="https://raw.githubusercontent.com/vorth/vzome-sharing/main/2021/07/24/12-40-30-Japan-Olympics-logo/Japan-Olympics-logo.vZome" selected>Olympics</option>
+      <option value="https://raw.githubusercontent.com/vorth/vzome-sharing/main/2021/09/16/13-19-19-spruce-disdyakis-triacontahedron/spruce-disdyakis-triacontahedron.vZome">Disdyakis Triacontahedron</option>
+      <link rel="prefetch" href="https://raw.githubusercontent.com/vorth/vzome-sharing/main/2021/09/16/13-19-19-spruce-disdyakis-triacontahedron/spruce-disdyakis-triacontahedron.vZome">
+      <option value="">(none)</option>
+    </select>
+    
+      <span>
+        Resize me! ↘
+      </span>
+    </section>
   </body>
 </html>
